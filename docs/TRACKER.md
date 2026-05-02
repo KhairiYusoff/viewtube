@@ -130,12 +130,12 @@ Types: `feat` · `fix` · `chore` · `style` · `refactor`
 
 > `feat(VT-008): add SWR data hooks`
 
-- [ ] `src/hooks/useVideos.ts` — trending by category, SWR cache per category
-- [ ] `src/hooks/useSearch.ts` — search with debounce 500ms
-- [ ] `src/hooks/useVideoDetail.ts` — single video detail
-- [ ] `src/hooks/useRelated.ts` — channel videos for related sidebar
-- [ ] `src/hooks/useWatchlist.ts` — localStorage read/write, max 500 items
-- [ ] Commit: `feat(VT-008): add SWR data hooks`
+- [x] `src/hooks/useVideos.ts` — trending by category, SWR cache per category
+- [x] `src/hooks/useSearch.ts` — search with debounce 500ms
+- [x] `src/hooks/useVideoDetail.ts` — single video detail
+- [x] `src/hooks/useRelated.ts` — channel videos for related sidebar
+- [x] `src/hooks/useWatchlist.ts` — localStorage read/write, max 500 items
+- [x] Commit: `feat(VT-008): add SWR data hooks`
 
 ---
 
