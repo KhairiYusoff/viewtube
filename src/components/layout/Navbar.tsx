@@ -1,5 +1,7 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 interface NavbarProps {
@@ -7,6 +9,19 @@ interface NavbarProps {
 }
 
 export function Navbar({ onMenuToggle }: NavbarProps) {
+  const router = useRouter();
+  const [query, setQuery] = useState('');
+
+  useEffect(() => {
+    const timeout = window.setTimeout(() => {
+      if (query.trim()) {
+        router.push(`/search?q=${encodeURIComponent(query)}`);
+      }
+    }, 500);
+
+    return () => window.clearTimeout(timeout);
+  }, [query, router]);
+
   return (
     <header className="sticky top-0 z-20 border-b border-zinc-200 bg-white/95 px-4 py-3 backdrop-blur dark:border-zinc-800 dark:bg-zinc-950/95 sm:px-6">
       <div className="mx-auto flex max-w-8xl items-center gap-3">
@@ -32,18 +47,20 @@ export function Navbar({ onMenuToggle }: NavbarProps) {
               type="search"
               aria-label="Search videos"
               placeholder="Search videos"
-              className="h-11 w-full rounded-full border border-zinc-200 bg-zinc-50 px-4 text-sm text-zinc-900 outline-none transition focus:border-zinc-400 focus:ring-2 focus:ring-zinc-200 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:focus:border-zinc-500"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              className="h-11 w-full rounded-full border border-zinc-200 bg-zinc-50 px-4 text-sm text-zinc-900 outline-none transition focus:border-zinc-400 focus:ring-2 focus:ring-zinc-200 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:focus:border-zinc-500 dark:focus:ring-zinc-700"
             />
           </div>
         </div>
 
-        <button
-          type="button"
-          aria-label="Watchlist"
+        <Link
+          href="/watchlist"
           className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-700 shadow-sm transition hover:border-zinc-300 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200"
+          aria-label="Watchlist"
         >
           ★
-        </button>
+        </Link>
       </div>
     </header>
   );
