@@ -27,8 +27,10 @@ function throwParseError(result: { success: boolean; error: unknown }, context: 
 
 function normalizeVideo(item: z.infer<typeof YouTubeVideoSchema>): Video {
   const thumbnail =
-    item.snippet.thumbnails.medium?.url ??
+    item.snippet.thumbnails.maxres?.url ??
     item.snippet.thumbnails.high?.url ??
+    item.snippet.thumbnails.standard?.url ??
+    item.snippet.thumbnails.medium?.url ??
     item.snippet.thumbnails.default?.url ??
     '';
 
