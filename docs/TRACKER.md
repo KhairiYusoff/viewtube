@@ -99,10 +99,10 @@ Types: `feat` · `fix` · `chore` · `style` · `refactor`
 
 > `chore(VT-003): add YouTube schemas and adapter`
 
-- [ ] `src/lib/schemas/youtube.schema.ts` — schemas for videos.list, search.list, channels.list, playlistItems.list responses
-- [ ] `src/lib/utils/duration.ts` — `parseDuration('PT1H27M53S')` → `'1:27:53'`
-- [ ] `src/lib/utils/format.ts` — `formatViews('1234567')` → `'1.2M views'`
-- [ ] `src/lib/adapters/youtube.ts` — `getTrending`, `search`, `getVideoDetail`, `getChannelUploadsPlaylistId`, `getChannelVideos`
+- [x] `src/lib/schemas/youtube.schema.ts` — schemas for videos.list, search.list, channels.list, playlistItems.list responses
+- [x] `src/lib/utils/duration.ts` — `parseDuration('PT1H27M53S')` → `'1:27:53'`
+- [x] `src/lib/utils/format.ts` — `formatViews('1234567')` → `'1.2M views'`
+- [x] `src/lib/adapters/youtube.ts` — `getTrending`, `search`, `getVideoDetail`, `getChannelUploadsPlaylistId`, `getChannelVideos`
 - [ ] Test adapter functions locally with `curl` before wiring route handlers
 - [ ] Commit: `chore(VT-003): add YouTube schemas, adapter, and utils`
 
