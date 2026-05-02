@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { CategoryTabs } from '@/components/home/CategoryTabs';
 import { Navbar } from '@/components/layout/Navbar';
 import { Sidebar } from '@/components/layout/Sidebar';
-import { VideoSkeleton } from '@/components/video/VideoSkeleton';
+import { VideoGrid } from '@/components/video';
 
 export function HomeShell() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -16,11 +16,7 @@ export function HomeShell() {
       <main className="mx-auto flex w-full max-w-8xl gap-6 px-4 py-6 sm:px-6 md:pl-0">
         <section className="flex-1">
           <CategoryTabs />
-          <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-            {Array.from({ length: 9 }).map((_, index) => (
-              <VideoSkeleton key={index} />
-            ))}
-          </div>
+          <VideoGrid videos={[]} isLoading />
         </section>
       </main>
     </div>

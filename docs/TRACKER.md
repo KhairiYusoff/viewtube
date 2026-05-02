@@ -63,7 +63,7 @@ Types: `feat` · `fix` · `chore` · `style` · `refactor`
 - [x] `app/layout.tsx` wires Navbar + Sidebar
 - [x] `app/page.tsx` renders CategoryTabs + empty grid placeholder
 - [x] Responsive check: 375px (1-col, no sidebar), 1280px (sidebar + 3-col grid)
-- [ ] Commit: `feat(VT-001): add layout shell with navbar, sidebar, category tabs`
+- [x] Commit: `feat(VT-001): add layout shell with navbar, sidebar, category tabs`
 
 ---
 
