@@ -1,5 +1,11 @@
 import { z } from 'zod';
-import { YouTubeChannelResponseSchema, YouTubePlaylistItemsResponseSchema, YouTubeSearchListResponseSchema, YouTubeVideoListResponseSchema, YouTubeVideoSchema } from '@/lib/schemas/youtube.schema';
+import {
+  YouTubeChannelResponseSchema,
+  YouTubePlaylistItemsResponseSchema,
+  YouTubeSearchListResponseSchema,
+  YouTubeVideoListResponseSchema,
+  YouTubeVideoSchema,
+} from '@/lib/schemas/youtube.schema';
 import { parseDuration } from '@/lib/utils/duration';
 import { Video } from '@/types/video';
 
@@ -92,13 +98,15 @@ export async function getVideoDetail(id: string) {
 }
 
 export async function search(query: string, pageToken?: string) {
-  const response = await fetch(buildUrl('search', {
-    part: 'snippet',
-    q: query,
-    type: 'video',
-    maxResults: '20',
-    pageToken,
-  }));
+  const response = await fetch(
+    buildUrl('search', {
+      part: 'snippet',
+      q: query,
+      type: 'video',
+      maxResults: '20',
+      pageToken,
+    }),
+  );
 
   const data = await parseJson(response, YouTubeSearchListResponseSchema, 'search');
   const ids = data.items.map((item) => item.id.videoId).filter(Boolean);
@@ -113,7 +121,9 @@ export async function search(query: string, pageToken?: string) {
   });
 
   const videosById = new Map(videos.items.map((video) => [video.id, video]));
-  const ordered = ids.map((id) => videosById.get(id)).filter((video): video is Video => Boolean(video));
+  const ordered = ids
+    .map((id) => videosById.get(id))
+    .filter((video): video is Video => Boolean(video));
 
   return {
     items: ordered,
@@ -122,10 +132,12 @@ export async function search(query: string, pageToken?: string) {
 }
 
 export async function getChannelUploadsPlaylistId(channelId: string) {
-  const response = await fetch(buildUrl('channels', {
-    part: 'contentDetails',
-    id: channelId,
-  }));
+  const response = await fetch(
+    buildUrl('channels', {
+      part: 'contentDetails',
+      id: channelId,
+    }),
+  );
 
   const data = await parseJson(response, YouTubeChannelResponseSchema, 'channels');
 
@@ -138,12 +150,14 @@ export async function getChannelUploadsPlaylistId(channelId: string) {
 }
 
 export async function getChannelVideos(playlistId: string, pageToken?: string) {
-  const response = await fetch(buildUrl('playlistItems', {
-    part: 'snippet,contentDetails',
-    playlistId,
-    maxResults: '20',
-    pageToken,
-  }));
+  const response = await fetch(
+    buildUrl('playlistItems', {
+      part: 'snippet,contentDetails',
+      playlistId,
+      maxResults: '20',
+      pageToken,
+    }),
+  );
 
   const data = await parseJson(response, YouTubePlaylistItemsResponseSchema, 'playlistItems');
   const ids = data.items.map((item) => item.contentDetails.videoId);
@@ -158,7 +172,9 @@ export async function getChannelVideos(playlistId: string, pageToken?: string) {
   });
 
   const videosById = new Map(videos.items.map((video) => [video.id, video]));
-  const ordered = ids.map((id) => videosById.get(id)).filter((video): video is Video => Boolean(video));
+  const ordered = ids
+    .map((id) => videosById.get(id))
+    .filter((video): video is Video => Boolean(video));
 
   return {
     items: ordered,

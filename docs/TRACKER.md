@@ -71,20 +71,20 @@ Types: `feat` · `fix` · `chore` · `style` · `refactor`
 
 > Stories: `VT-002`
 
-- [ ] `src/types/video.ts` — define `Video`, `VideoListResult`, `WatchlistItem` types
-- [ ] `src/components/video/VideoCard.tsx` — thumbnail (16:9) + duration badge + title + channel + views
-- [ ] `src/components/video/VideoGrid.tsx` — responsive grid, accepts `Video[]`
-- [ ] `src/components/video/VideoSkeleton.tsx` — skeleton version of VideoCard (pulse animation)
-- [ ] Wire skeleton grid into home page (no real data yet — shows loading state)
-- [ ] Thumbnail hover scale animation
-- [ ] `npm run build` passes
-- [ ] Commit: `feat(VT-002): add video card, grid, and skeleton states`
+- [x] `src/types/video.ts` — define `Video`, `VideoListResult`, `WatchlistItem` types
+- [x] `src/components/video/VideoCard.tsx` — thumbnail (16:9) + duration badge + title + channel + views
+- [x] `src/components/video/VideoGrid.tsx` — responsive grid, accepts `Video[]`
+- [x] `src/components/video/VideoSkeleton.tsx` — skeleton version of VideoCard (pulse animation)
+- [x] Wire skeleton grid into home page (no real data yet — shows loading state)
+- [x] Thumbnail hover scale animation
+- [x] `npm run build` passes
+- [x] Commit: `feat(VT-002): add video card, grid, and skeleton states`
 
 ### Sprint 1 — Done When ✓
 
-- [ ] `npm run dev` shows layout shell with skeleton cards
-- [ ] Responsive at 375px and 1280px
-- [ ] `npm run build` passes — zero TS errors
+- [x] `npm run dev` shows layout shell with skeleton cards
+- [x] Responsive at 375px and 1280px
+- [x] `npm run build` passes — zero TS errors
 - [ ] Dark theme visible, all design tokens applied
 
 ---
@@ -110,16 +110,16 @@ Types: `feat` · `fix` · `chore` · `style` · `refactor`
 
 ### Day 5 — Route Handlers
 
-- [ ] `app/api/v1/videos/route.ts` — GET `?category=` → calls `getTrending`
+- [x] `app/api/v1/videos/route.ts` — GET `?category=` → calls `getTrending`
 - [ ] Commit: `feat(VT-004): add trending videos route handler`
 
-- [ ] `app/api/v1/videos/[id]/route.ts` — GET → calls `getVideoDetail`
+- [x] `app/api/v1/videos/[id]/route.ts` — GET → calls `getVideoDetail`
 - [ ] Commit: `feat(VT-005): add video detail route handler`
 
-- [ ] `app/api/v1/search/route.ts` — GET `?q=&pageToken=` → calls `search`
+- [x] `app/api/v1/search/route.ts` — GET `?q=&pageToken=` → calls `search`
 - [ ] Commit: `feat(VT-006): add search route handler`
 
-- [ ] `app/api/v1/related/route.ts` — GET `?channelId=&playlistId=&pageToken=` → calls `getChannelVideos`
+- [x] `app/api/v1/related/route.ts` — GET `?channelId=&playlistId=&pageToken=` → calls `getChannelVideos`
 - [ ] Commit: `feat(VT-007): add related videos route handler`
 
 - [ ] Test all 4 routes with `curl http://localhost:3000/api/v1/...` before moving on
