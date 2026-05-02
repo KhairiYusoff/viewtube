@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { Video } from '@/types/video';
 
@@ -5,10 +6,13 @@ export function VideoCard({ video }: { video: Video }) {
   return (
     <article className="group overflow-hidden rounded-3xl border border-zinc-800/60 bg-zinc-950 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg">
       <Link href={`/watch/${video.id}`} className="block">
-        <div className="relative overflow-hidden rounded-t-3xl">
-          <img
+        <div className="relative overflow-hidden rounded-t-3xl bg-zinc-900">
+          <Image
             src={video.thumbnail}
             alt={video.title}
+            width={320}
+            height={180}
+            loading="lazy"
             className="aspect-video w-full object-cover transition duration-200 group-hover:scale-105"
           />
           <span className="absolute right-3 bottom-3 rounded-full bg-black/80 px-2 py-1 text-xs font-semibold text-white">

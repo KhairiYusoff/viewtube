@@ -49,6 +49,11 @@ export function useRelated(params: { playlistId?: string; channelId?: string }) 
   const nextPageToken = data?.[data.length - 1]?.nextPageToken;
   const isLoading = !data && !error;
   const hasMore = Boolean(nextPageToken);
+  const loadMore = () => {
+    if (!isValidating) {
+      setSize(size + 1);
+    }
+  };
 
   return {
     videos,
@@ -57,7 +62,7 @@ export function useRelated(params: { playlistId?: string; channelId?: string }) 
     isValidating,
     error,
     size,
-    loadMore: () => setSize(size + 1),
+    loadMore,
     hasMore,
   };
 }

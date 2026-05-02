@@ -56,7 +56,7 @@ export function useSearch(query: string) {
     if (debouncedQuery.trim()) {
       setSize(1);
     }
-  }, [debouncedQuery, setSize]);
+  }, [debouncedQuery]);
 
   return {
     query: debouncedQuery,

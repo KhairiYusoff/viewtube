@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { CategoryTabs } from '@/components/home/CategoryTabs';
 import { Navbar } from '@/components/layout/Navbar';
 import { Sidebar } from '@/components/layout/Sidebar';
@@ -8,39 +8,53 @@ import { VideoGrid } from '@/components/video';
 import { useVideos } from '@/hooks';
 
 const categoryMap: Record<string, string> = {
-  'All': '',
-  'Music': '10',
-  'Gaming': '20',
+  All: '',
+  Music: '10',
+  Gaming: '20',
   'Science & Tech': '28',
-  'Education': '27',
-  'Sports': '17',
-  'Entertainment': '24',
+  Education: '27',
+  Sports: '17',
+  Entertainment: '24',
 };
 
 export function HomeShell() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState('All');
   const sentinelRef = useRef<HTMLDivElement>(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
   const categoryId = categoryMap[activeCategory];
-  const { videos, isLoading, error, loadMore, hasMore } = useVideos(categoryId);
+  const { videos, isLoading, isValidating, error, loadMore, hasMore } = useVideos(categoryId);
 
   useEffect(() => {
-    const sentinel = sentinelRef.current;
-    if (!sentinel || !hasMore) return;
+    // Always disconnect and reset on effect re-run
+    if (observerRef.current) {
+      observerRef.current.disconnect();
+      observerRef.current = null;
+    }
 
-    const observer = new IntersectionObserver(
+    const sentinel = sentinelRef.current;
+    // Guard: only observe if we have more data and not currently loading
+    if (!sentinel || !hasMore || isValidating) return;
+
+    observerRef.current = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) {
+        // Double-check guards before loading more (prevent race conditions)
+        if (entries[0].isIntersecting && hasMore && !isValidating) {
           loadMore();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
-    observer.observe(sentinel);
-    return () => observer.disconnect();
-  }, [hasMore, loadMore]);
+    observerRef.current.observe(sentinel);
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+        observerRef.current = null;
+      }
+    };
+  }, [hasMore, isValidating, loadMore]);
 
   const handleCategoryChange = (category: string) => {
     setActiveCategory(category);
@@ -52,10 +66,7 @@ export function HomeShell() {
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       <main className="mx-auto flex w-full max-w-8xl gap-6 px-4 py-6 sm:px-6 md:pl-0">
         <section className="flex-1">
-          <CategoryTabs
-            activeCategory={activeCategory}
-            onCategoryChange={handleCategoryChange}
-          />
+          <CategoryTabs activeCategory={activeCategory} onCategoryChange={handleCategoryChange} />
           <VideoGrid videos={videos} isLoading={isLoading} error={error} />
           {hasMore && (
             <div ref={sentinelRef} className="flex justify-center py-8">
