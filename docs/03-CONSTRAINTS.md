@@ -7,15 +7,15 @@
 
 ## Folder & File Naming
 
-| Rule | Example |
-|------|---------|
-| Components: PascalCase | `VideoCard.tsx`, `CategoryTabs.tsx` |
-| Hooks: camelCase with `use` prefix | `useVideos.ts`, `useWatchlist.ts` |
-| Adapters: camelCase | `youtube.ts` |
-| Schemas: camelCase + `.schema.ts` suffix | `youtube.schema.ts` |
-| Types: camelCase + `.ts` | `video.ts` |
-| Config: camelCase | `categories.ts` |
-| Every component folder has `index.ts` barrel | `components/video/index.ts` |
+| Rule                                         | Example                             |
+| -------------------------------------------- | ----------------------------------- |
+| Components: PascalCase                       | `VideoCard.tsx`, `CategoryTabs.tsx` |
+| Hooks: camelCase with `use` prefix           | `useVideos.ts`, `useWatchlist.ts`   |
+| Adapters: camelCase                          | `youtube.ts`                        |
+| Schemas: camelCase + `.schema.ts` suffix     | `youtube.schema.ts`                 |
+| Types: camelCase + `.ts`                     | `video.ts`                          |
+| Config: camelCase                            | `categories.ts`                     |
+| Every component folder has `index.ts` barrel | `components/video/index.ts`         |
 
 ---
 
@@ -41,14 +41,14 @@ src/
 
 ## Server vs Client Boundary
 
-| Location | Server or Client | Rule |
-|----------|-----------------|------|
-| `app/page.tsx` | Server Component (default) | No hooks, no useState |
-| `app/search/page.tsx` | Server Component | Reads `searchParams` prop |
-| `app/watch/[id]/page.tsx` | Server Component | Reads `params.id` prop |
-| `app/api/v1/**/route.ts` | Server only | Injects API key, calls adapter |
-| `components/**` that use hooks | `'use client'` | Must declare at top |
-| `components/**` that are pure display | Server Component (default) | No directive needed |
+| Location                              | Server or Client           | Rule                           |
+| ------------------------------------- | -------------------------- | ------------------------------ |
+| `app/page.tsx`                        | Server Component (default) | No hooks, no useState          |
+| `app/search/page.tsx`                 | Server Component           | Reads `searchParams` prop      |
+| `app/watch/[id]/page.tsx`             | Server Component           | Reads `params.id` prop         |
+| `app/api/v1/**/route.ts`              | Server only                | Injects API key, calls adapter |
+| `components/**` that use hooks        | `'use client'`             | Must declare at top            |
+| `components/**` that are pure display | Server Component (default) | No directive needed            |
 
 **Rule:** Mark `'use client'` only when the component uses `useState`, `useEffect`, browser APIs, or SWR hooks. Everything else is a Server Component by default.
 
@@ -71,6 +71,7 @@ Hooks always call `/api/v1/...` (relative URL).
 ## Adapter Pattern
 
 Every adapter file must:
+
 1. Accept normalized parameters (not raw query strings)
 2. Build the YouTube API URL internally
 3. Validate the response with Zod `safeParse`
@@ -103,12 +104,13 @@ export async function getTrending(url: string): Promise<unknown> { ... }
 - Hooks call `/api/v1/` endpoints only — never YouTube directly
 - `refreshInterval` must be explicit — no silent auto-polling on video data
 - SWR key must encode all parameters that affect the response:
+
   ```ts
   // ✅ — category change triggers refetch
-  const key = `/api/v1/videos?category=${categoryId}`
-  
+  const key = `/api/v1/videos?category=${categoryId}`;
+
   // ❌ — static key won't refetch on category change
-  const key = `/api/v1/videos`
+  const key = `/api/v1/videos`;
   ```
 
 ---
@@ -131,8 +133,8 @@ Do NOT use a "Load More" button (unless as fallback for accessibility).
 
 ```ts
 // Pattern — hook owns the page state
-const [pages, setPages] = useState<Video[][]>([initialData])
-const [nextPageToken, setNextPageToken] = useState<string | null>(token)
+const [pages, setPages] = useState<Video[][]>([initialData]);
+const [nextPageToken, setNextPageToken] = useState<string | null>(token);
 
 // On intersection: fetch next page, append to pages[]
 ```
@@ -164,5 +166,5 @@ const [nextPageToken, setNextPageToken] = useState<string | null>(token)
 - Types defined in `src/types/video.ts` — not inline in components
 - Zod infer pattern for schema-derived types:
   ```ts
-  export type YouTubeVideoRaw = z.infer<typeof YouTubeVideoSchema>
+  export type YouTubeVideoRaw = z.infer<typeof YouTubeVideoSchema>;
   ```

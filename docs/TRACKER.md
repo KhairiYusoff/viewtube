@@ -57,12 +57,12 @@ Types: `feat` · `fix` · `chore` · `style` · `refactor`
 
 > Stories: `VT-001` shell
 
-- [ ] `src/components/layout/Navbar.tsx` — logo + search bar + watchlist icon
-- [ ] `src/components/layout/Sidebar.tsx` — Home + Watchlist nav links
-- [ ] `src/components/home/CategoryTabs.tsx` — 7 chips, active state, horizontal scroll on mobile
-- [ ] `app/layout.tsx` wires Navbar + Sidebar
-- [ ] `app/page.tsx` renders CategoryTabs + empty grid placeholder
-- [ ] Responsive check: 375px (1-col, no sidebar), 1280px (sidebar + 3-col grid)
+- [x] `src/components/layout/Navbar.tsx` — logo + search bar + watchlist icon
+- [x] `src/components/layout/Sidebar.tsx` — Home + Watchlist nav links
+- [x] `src/components/home/CategoryTabs.tsx` — 7 chips, active state, horizontal scroll on mobile
+- [x] `app/layout.tsx` wires Navbar + Sidebar
+- [x] `app/page.tsx` renders CategoryTabs + empty grid placeholder
+- [x] Responsive check: 375px (1-col, no sidebar), 1280px (sidebar + 3-col grid)
 - [ ] Commit: `feat(VT-001): add layout shell with navbar, sidebar, category tabs`
 
 ---

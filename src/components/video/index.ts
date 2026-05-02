@@ -1,1 +1,1 @@
-export * from "./VideoSkeleton";
+export * from './VideoSkeleton';

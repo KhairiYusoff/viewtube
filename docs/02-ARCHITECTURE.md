@@ -105,15 +105,15 @@ SWR is used for the first page. Subsequent pages are appended manually via `useS
 
 ## Category Tabs → API Mapping
 
-| Tab | API call | Category ID | Units |
-|-----|----------|------------|-------|
-| All | `videos.list?chart=mostPopular` | none | 1 |
-| Music | `videos.list?chart=mostPopular&videoCategoryId=10` | 10 | 1 |
-| Gaming | `videos.list?chart=mostPopular&videoCategoryId=20` | 20 | 1 |
-| Science & Tech | `videos.list?chart=mostPopular&videoCategoryId=28` | 28 | 1 |
-| Education | `videos.list?chart=mostPopular&videoCategoryId=27` | 27 | 1 |
-| Sports | `videos.list?chart=mostPopular&videoCategoryId=17` | 17 | 1 |
-| Entertainment | `videos.list?chart=mostPopular&videoCategoryId=24` | 24 | 1 |
+| Tab            | API call                                           | Category ID | Units |
+| -------------- | -------------------------------------------------- | ----------- | ----- |
+| All            | `videos.list?chart=mostPopular`                    | none        | 1     |
+| Music          | `videos.list?chart=mostPopular&videoCategoryId=10` | 10          | 1     |
+| Gaming         | `videos.list?chart=mostPopular&videoCategoryId=20` | 20          | 1     |
+| Science & Tech | `videos.list?chart=mostPopular&videoCategoryId=28` | 28          | 1     |
+| Education      | `videos.list?chart=mostPopular&videoCategoryId=27` | 27          | 1     |
+| Sports         | `videos.list?chart=mostPopular&videoCategoryId=17` | 17          | 1     |
+| Entertainment  | `videos.list?chart=mostPopular&videoCategoryId=24` | 24          | 1     |
 
 All tabs: **1 unit each**. Not search. SWR caches per tab — switching back costs 0 units.
 
@@ -169,36 +169,39 @@ src/
 
 ```ts
 type Video = {
-  id: string
-  title: string
-  channelTitle: string
-  channelId: string
-  thumbnail: string          // medium quality URL
-  duration: string           // parsed: "12:34" or "1:23:45"
-  viewCount: string          // raw string from API e.g. "1234567"
-  publishedAt: string        // ISO string
-}
+  id: string;
+  title: string;
+  channelTitle: string;
+  channelId: string;
+  thumbnail: string; // medium quality URL
+  duration: string; // parsed: "12:34" or "1:23:45"
+  viewCount: string; // raw string from API e.g. "1234567"
+  publishedAt: string; // ISO string
+};
 
 type SearchResult = {
-  items: Video[]
-  nextPageToken: string | null
-}
+  items: Video[];
+  nextPageToken: string | null;
+};
 
-type WatchlistItem = Pick<Video, 'id' | 'title' | 'thumbnail' | 'channelTitle' | 'duration'>
+type WatchlistItem = Pick<
+  Video,
+  "id" | "title" | "thumbnail" | "channelTitle" | "duration"
+>;
 ```
 
 ---
 
 ## Quota Budget Per User Session
 
-| Action | Units |
-|--------|-------|
-| Home tab load (videos.list batch) | 1 |
-| Switch category tab (cached) | 0 |
-| Infinite scroll load more (videos.list) | 1 |
-| Search query | 100 |
-| Watch page load (video detail + channel info + playlist items) | 3 |
-| Related — infinite scroll load more (playlistItems.list) | 1 |
-| **Typical session total** | **~300 units** |
+| Action                                                         | Units          |
+| -------------------------------------------------------------- | -------------- |
+| Home tab load (videos.list batch)                              | 1              |
+| Switch category tab (cached)                                   | 0              |
+| Infinite scroll load more (videos.list)                        | 1              |
+| Search query                                                   | 100            |
+| Watch page load (video detail + channel info + playlist items) | 3              |
+| Related — infinite scroll load more (playlistItems.list)       | 1              |
+| **Typical session total**                                      | **~300 units** |
 
 10,000 unit daily budget ÷ 300 = ~33 full sessions per day before hitting limit.

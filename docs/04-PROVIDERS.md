@@ -7,7 +7,7 @@
 **Base URL:** `https://www.googleapis.com/youtube/v3`  
 **Auth:** API key only (no OAuth — public data only)  
 **Free quota:** 10,000 units/day (resets midnight Pacific Time)  
-**Key env var:** `YOUTUBE_API_KEY`  
+**Key env var:** `YOUTUBE_API_KEY`
 
 ---
 
@@ -74,6 +74,7 @@ GET /videos
 
 **Cost: 1 unit per call regardless of how many IDs (up to 50)**  
 Used for:
+
 - Enriching search results (view count + duration after search.list)
 - Single video detail on `/watch/[id]` page
 
@@ -102,6 +103,7 @@ curl "https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=UCVH
 ```
 
 Response path to uploads playlist ID:
+
 ```
 items[0].contentDetails.relatedPlaylists.uploads
 ```
@@ -135,30 +137,30 @@ Note: `playlistItems.list` returns `contentDetails.videoId` — must batch `vide
 
 ### From `videos.list` (trending + detail)
 
-| Field | Path |
-|-------|------|
-| Video ID | `items[].id` |
-| Title | `items[].snippet.title` |
-| Channel name | `items[].snippet.channelTitle` |
-| Channel ID | `items[].snippet.channelId` |
+| Field              | Path                                    |
+| ------------------ | --------------------------------------- |
+| Video ID           | `items[].id`                            |
+| Title              | `items[].snippet.title`                 |
+| Channel name       | `items[].snippet.channelTitle`          |
+| Channel ID         | `items[].snippet.channelId`             |
 | Thumbnail (medium) | `items[].snippet.thumbnails.medium.url` |
-| Thumbnail (high) | `items[].snippet.thumbnails.high.url` |
-| Published date | `items[].snippet.publishedAt` |
-| View count | `items[].statistics.viewCount` |
-| Duration (ISO) | `items[].contentDetails.duration` |
-| Next page token | `nextPageToken` |
+| Thumbnail (high)   | `items[].snippet.thumbnails.high.url`   |
+| Published date     | `items[].snippet.publishedAt`           |
+| View count         | `items[].statistics.viewCount`          |
+| Duration (ISO)     | `items[].contentDetails.duration`       |
+| Next page token    | `nextPageToken`                         |
 
 ### From `search.list`
 
-| Field | Path |
-|-------|------|
-| Video ID | `items[].id.videoId` |
-| Title | `items[].snippet.title` |
-| Channel name | `items[].snippet.channelTitle` |
-| Channel ID | `items[].snippet.channelId` |
-| Thumbnail | `items[].snippet.thumbnails.medium.url` |
-| Published date | `items[].snippet.publishedAt` |
-| Next page token | `nextPageToken` |
+| Field           | Path                                    |
+| --------------- | --------------------------------------- |
+| Video ID        | `items[].id.videoId`                    |
+| Title           | `items[].snippet.title`                 |
+| Channel name    | `items[].snippet.channelTitle`          |
+| Channel ID      | `items[].snippet.channelId`             |
+| Thumbnail       | `items[].snippet.thumbnails.medium.url` |
+| Published date  | `items[].snippet.publishedAt`           |
+| Next page token | `nextPageToken`                         |
 
 ⚠️ No `viewCount` or `duration` — must enrich with `videos.list` batch.
 
@@ -170,11 +172,11 @@ YouTube returns ISO 8601 duration: `PT1H27M53S`, `PT9M39S`, `PT45S`
 
 Must parse to display format:
 
-| Raw | Display |
-|-----|---------|
+| Raw          | Display   |
+| ------------ | --------- |
 | `PT1H27M53S` | `1:27:53` |
-| `PT9M39S` | `9:39` |
-| `PT45S` | `0:45` |
+| `PT9M39S`    | `9:39`    |
+| `PT45S`      | `0:45`    |
 
 Parser lives in `src/lib/utils/duration.ts`.
 
@@ -186,12 +188,12 @@ YouTube returns raw string: `"1234567"`
 
 Must format for display:
 
-| Raw | Display |
-|-----|---------|
+| Raw         | Display      |
+| ----------- | ------------ |
 | `"1234567"` | `1.2M views` |
-| `"234567"` | `234K views` |
-| `"5678"` | `5.6K views` |
-| `"234"` | `234 views` |
+| `"234567"`  | `234K views` |
+| `"5678"`    | `5.6K views` |
+| `"234"`     | `234 views`  |
 
 Formatter lives in `src/lib/utils/format.ts`.
 
@@ -199,14 +201,14 @@ Formatter lives in `src/lib/utils/format.ts`.
 
 ## Known Limits & Gotchas
 
-| Gotcha | Detail |
-|--------|--------|
-| Quota resets midnight Pacific (UTC-8) | Not midnight local time |
-| `search.list` has no stats | Always follow with `videos.list` batch |
-| `pageToken` is opaque | Never construct it manually — use exactly as returned |
-| `maxResults` max is 50 | Default is 5 — always set explicitly |
-| `regionCode` affects trending | Use `MY` — omitting gives US results |
-| Duration field is ISO 8601 | Must parse — never display raw |
-| viewCount is a string | `"1234567"` not a number — parse before math |
-| Thumbnails may be missing | `medium` is usually safe, `high` sometimes absent |
-| Deleted/private videos | May appear in playlist but `videos.list` returns empty — handle gracefully |
+| Gotcha                                | Detail                                                                     |
+| ------------------------------------- | -------------------------------------------------------------------------- |
+| Quota resets midnight Pacific (UTC-8) | Not midnight local time                                                    |
+| `search.list` has no stats            | Always follow with `videos.list` batch                                     |
+| `pageToken` is opaque                 | Never construct it manually — use exactly as returned                      |
+| `maxResults` max is 50                | Default is 5 — always set explicitly                                       |
+| `regionCode` affects trending         | Use `MY` — omitting gives US results                                       |
+| Duration field is ISO 8601            | Must parse — never display raw                                             |
+| viewCount is a string                 | `"1234567"` not a number — parse before math                               |
+| Thumbnails may be missing             | `medium` is usually safe, `high` sometimes absent                          |
+| Deleted/private videos                | May appear in playlist but `videos.list` returns empty — handle gracefully |

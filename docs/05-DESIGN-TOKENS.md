@@ -12,53 +12,53 @@ Inspired by YouTube's dark UI — near-black background, white text, red accent.
 
 ### Background & Surface
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--color-bg` | `#0f0f0f` | Page background (YouTube's exact dark bg) |
-| `--color-surface` | `#212121` | Card / sidebar background |
-| `--color-surface-2` | `#272727` | Hover states, elevated surfaces |
-| `--color-border` | `#3f3f3f` | Dividers, card borders |
+| Token               | Value     | Usage                                     |
+| ------------------- | --------- | ----------------------------------------- |
+| `--color-bg`        | `#0f0f0f` | Page background (YouTube's exact dark bg) |
+| `--color-surface`   | `#212121` | Card / sidebar background                 |
+| `--color-surface-2` | `#272727` | Hover states, elevated surfaces           |
+| `--color-border`    | `#3f3f3f` | Dividers, card borders                    |
 
 ### Text
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--color-text` | `#f1f1f1` | Primary text |
-| `--color-dim` | `#aaaaaa` | Secondary text (channel name, date) |
-| `--color-subtle` | `#717171` | Tertiary text, placeholders |
+| Token            | Value     | Usage                               |
+| ---------------- | --------- | ----------------------------------- |
+| `--color-text`   | `#f1f1f1` | Primary text                        |
+| `--color-dim`    | `#aaaaaa` | Secondary text (channel name, date) |
+| `--color-subtle` | `#717171` | Tertiary text, placeholders         |
 
 ### Accent
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--color-accent` | `#ff0000` | YouTube red — logo, active tab indicator |
-| `--color-accent-hover` | `#cc0000` | Hover state for accent elements |
+| Token                  | Value     | Usage                                    |
+| ---------------------- | --------- | ---------------------------------------- |
+| `--color-accent`       | `#ff0000` | YouTube red — logo, active tab indicator |
+| `--color-accent-hover` | `#cc0000` | Hover state for accent elements          |
 
 ### Semantic
 
-| Token | Value | Usage |
-|-------|-------|-------|
+| Token              | Value     | Usage                          |
+| ------------------ | --------- | ------------------------------ |
 | `--color-positive` | `#2ba640` | Positive delta, success states |
-| `--color-negative` | `#f44336` | Error, negative delta |
-| `--color-warning` | `#f5a623` | Stale data, warnings |
+| `--color-negative` | `#f44336` | Error, negative delta          |
+| `--color-warning`  | `#f5a623` | Stale data, warnings           |
 
 ---
 
 ## Typography
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--font-sans` | `Roboto, Inter, system-ui` | All body text |
-| `--font-mono` | `Roboto Mono, Geist Mono` | View counts, durations |
+| Token         | Value                      | Usage                  |
+| ------------- | -------------------------- | ---------------------- |
+| `--font-sans` | `Roboto, Inter, system-ui` | All body text          |
+| `--font-mono` | `Roboto Mono, Geist Mono`  | View counts, durations |
 
 ### Scale
 
-| Class | Size | Weight | Usage |
-|-------|------|--------|-------|
-| `text-xl font-semibold` | 20px | 600 | Page titles |
-| `text-base font-medium` | 16px | 500 | Video card title (2-line clamp) |
-| `text-sm` | 14px | 400 | Channel name, metadata |
-| `text-xs` | 12px | 400 | Duration badge, view count |
+| Class                   | Size | Weight | Usage                           |
+| ----------------------- | ---- | ------ | ------------------------------- |
+| `text-xl font-semibold` | 20px | 600    | Page titles                     |
+| `text-base font-medium` | 16px | 500    | Video card title (2-line clamp) |
+| `text-sm`               | 14px | 400    | Channel name, metadata          |
+| `text-xs`               | 12px | 400    | Duration badge, view count      |
 
 ---
 
@@ -66,15 +66,15 @@ Inspired by YouTube's dark UI — near-black background, white text, red accent.
 
 Tailwind default scale. Preferred values:
 
-| Usage | Value |
-|-------|-------|
+| Usage                   | Value                  |
+| ----------------------- | ---------------------- |
 | Page horizontal padding | `px-4 sm:px-6 lg:px-8` |
-| Card padding | `p-3` |
-| Card gap (grid) | `gap-4` |
-| Section gap | `gap-6` |
-| Navbar height | `h-14` |
-| Sidebar width | `w-60` |
-| Thumbnail border radius | `rounded-xl` |
+| Card padding            | `p-3`                  |
+| Card gap (grid)         | `gap-4`                |
+| Section gap             | `gap-6`                |
+| Navbar height           | `h-14`                 |
+| Sidebar width           | `w-60`                 |
+| Thumbnail border radius | `rounded-xl`           |
 
 ---
 
@@ -100,6 +100,7 @@ Tailwind default scale. Preferred values:
 ## Layout
 
 ### Home / Search page
+
 ```
 ┌────────────────────────────────────────────────────────┐
 │  Navbar (h-14, sticky top-0)                           │
@@ -114,6 +115,7 @@ Tailwind default scale. Preferred values:
 Grid: `grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4`
 
 ### Watch page
+
 ```
 ┌────────────────────────────────────────────────────────┐
 │  Navbar                                                 │
@@ -127,11 +129,11 @@ Grid: `grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4`
 
 ## Motion
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--duration-fast` | `150ms` | Hover transitions |
-| `--duration-normal` | `200ms` | Tab switches, reveals |
-| `--ease-default` | `ease-out` | All transitions |
+| Token               | Value      | Usage                 |
+| ------------------- | ---------- | --------------------- |
+| `--duration-fast`   | `150ms`    | Hover transitions     |
+| `--duration-normal` | `200ms`    | Tab switches, reveals |
+| `--ease-default`    | `ease-out` | All transitions       |
 
 Standard hover: `transition-colors duration-150`  
 Thumbnail hover: `group-hover:scale-105 transition-transform duration-200`
