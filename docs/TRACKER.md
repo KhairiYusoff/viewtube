@@ -158,13 +158,13 @@ Types: `feat` · `fix` · `chore` · `style` · `refactor`
 
 > `feat(VT-010): wire search page`
 
-- [ ] `SearchBar` debounces input 500ms, navigates to `/search?q=`
-- [ ] `app/search/page.tsx` reads `searchParams.q`
-- [ ] `SearchShell` calls `useSearch(query)`
-- [ ] Results shown in `VideoGrid` — same component as home
-- [ ] Infinite scroll works on search results
-- [ ] No results state
-- [ ] Commit: `feat(VT-010): wire search page with debounced query`
+- [x] `SearchBar` debounces input 500ms, navigates to `/search?q=`
+- [x] `app/search/page.tsx` reads `searchParams.q`
+- [x] `SearchShell` calls `useSearch(query)`
+- [x] Results shown in `VideoGrid` — same component as home
+- [x] Infinite scroll works on search results
+- [x] No results state
+- [x] Commit: `feat(VT-010): wire search page with debounced query`
 
 ---
 
