@@ -143,14 +143,14 @@ Types: `feat` · `fix` · `chore` · `style` · `refactor`
 
 > `feat(VT-009): wire home page with live data and infinite scroll`
 
-- [ ] `HomeShell` (client) calls `useVideos(activeCategory)`
-- [ ] Category tab switch triggers refetch via SWR key change
-- [ ] `VideoGrid` renders real `Video[]` data
-- [ ] Infinite scroll: `IntersectionObserver` on sentinel div → load next page → append
-- [ ] Loading: skeleton grid shown
-- [ ] Error: error state with retry
-- [ ] Empty: empty state message
-- [ ] Commit: `feat(VT-009): wire home page with live trending data and infinite scroll`
+- [x] `HomeShell` (client) calls `useVideos(activeCategory)`
+- [x] Category tab switch triggers refetch via SWR key change
+- [x] `VideoGrid` renders real `Video[]` data
+- [x] Infinite scroll: `IntersectionObserver` on sentinel div → load next page → append
+- [x] Loading: skeleton grid shown
+- [x] Error: error state with retry
+- [x] Empty: empty state message
+- [x] Commit: `feat(VT-009): wire home page with live trending data and infinite scroll`
 
 ---
 
