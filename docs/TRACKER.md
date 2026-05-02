@@ -41,7 +41,7 @@ Types: `feat` · `fix` · `chore` · `style` · `refactor`
 - [x] Prettier installed, .prettierrc created, `format` script added
 - [x] Tailwind v4 confirmed: `@import "tailwindcss"` in `globals.css`
 - [ ] `globals.css` — full `@theme {}` with all ViewTube design tokens from `05-DESIGN-TOKENS.md`
-- [ ] `layout.tsx` — Roboto + Roboto Mono fonts, `dark` class on `<html>`
+- [x] `layout.tsx` — Roboto + Roboto Mono fonts, `dark` class on `<html>`
 - [ ] `npx shadcn@latest init --defaults`
 - [x] SWR + Zod installed: `npm i swr zod`
 - [x] `.env.local` + `.env.example` created with `YOUTUBE_API_KEY`
