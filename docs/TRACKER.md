@@ -34,22 +34,22 @@ Types: `feat` · `fix` · `chore` · `style` · `refactor`
 
 > `chore(setup): init Next.js project with Tailwind v4 and shadcn/ui`
 
-- [ ] `node -v` shows v20 — run `nvm use 20` if not
-- [ ] Scaffold with `create-next-app@latest` — TypeScript, App Router, Tailwind
-- [ ] Verify `package.json` next version and react version
-- [ ] `"strict": true` in `tsconfig.json`
-- [ ] Prettier installed, `.prettierrc` created, `format` script added
-- [ ] Tailwind v4 confirmed: `@import "tailwindcss"` in `globals.css`
+- [x] node -v shows v20 — run `nvm use 20` if not
+- [x] Scaffold with `create-next-app@latest` — TypeScript, App Router, Tailwind
+- [x] Verify `package.json` next version and react version
+- [x] `"strict": true` in `tsconfig.json`
+- [x] Prettier installed, .prettierrc created, `format` script added
+- [x] Tailwind v4 confirmed: `@import "tailwindcss"` in `globals.css`
 - [ ] `globals.css` — full `@theme {}` with all ViewTube design tokens from `05-DESIGN-TOKENS.md`
 - [ ] `layout.tsx` — Roboto + Roboto Mono fonts, `dark` class on `<html>`
 - [ ] `npx shadcn@latest init --defaults`
-- [ ] SWR + Zod installed: `npm i swr zod`
-- [ ] `.env.local` + `.env.example` created with `YOUTUBE_API_KEY`
-- [ ] `AGENTS.md` + `CLAUDE.md` created
+- [x] SWR + Zod installed: `npm i swr zod`
+- [x] `.env.local` + `.env.example` created with `YOUTUBE_API_KEY`
+- [x] `AGENTS.md` + `CLAUDE.md` created
 - [ ] `docs/technical/ZOD-PRACTICES.md` copied from SignalDesk
 - [ ] `docs/technical/NEXTJS-PRACTICES.md` copied from SignalDesk
-- [ ] `npm run build` passes — zero TS errors
-- [ ] Commit: `chore(setup): init Next.js project with Tailwind v4 and shadcn/ui`
+- [x] `npm run build` passes — zero TS errors
+- [x] Commit: `chore(setup): init Next.js project with Tailwind v4 and shadcn/ui`
 
 ---
 
