@@ -40,14 +40,14 @@ Types: `feat` · `fix` · `chore` · `style` · `refactor`
 - [x] `"strict": true` in `tsconfig.json`
 - [x] Prettier installed, .prettierrc created, `format` script added
 - [x] Tailwind v4 confirmed: `@import "tailwindcss"` in `globals.css`
-- [ ] `globals.css` — full `@theme {}` with all ViewTube design tokens from `05-DESIGN-TOKENS.md`
+- [x] `globals.css` — full `@theme {}` with all ViewTube design tokens from `05-DESIGN-TOKENS.md`
 - [x] `layout.tsx` — Roboto + Roboto Mono fonts, `dark` class on `<html>`
 - [ ] `npx shadcn@latest init --defaults`
 - [x] SWR + Zod installed: `npm i swr zod`
 - [x] `.env.local` + `.env.example` created with `YOUTUBE_API_KEY`
 - [x] `AGENTS.md` + `CLAUDE.md` created
-- [ ] `docs/technical/ZOD-PRACTICES.md` copied from SignalDesk
-- [ ] `docs/technical/NEXTJS-PRACTICES.md` copied from SignalDesk
+- [x] `docs/technical/ZOD-PRACTICES.md` copied from SignalDesk
+- [x] `docs/technical/NEXTJS-PRACTICES.md` copied from SignalDesk
 - [x] `npm run build` passes — zero TS errors
 - [x] Commit: `chore(setup): init Next.js project with Tailwind v4 and shadcn/ui`
 
@@ -85,7 +85,7 @@ Types: `feat` · `fix` · `chore` · `style` · `refactor`
 - [x] `npm run dev` shows layout shell with skeleton cards
 - [x] Responsive at 375px and 1280px
 - [x] `npm run build` passes — zero TS errors
-- [ ] Dark theme visible, all design tokens applied
+- [x] Dark theme visible, all design tokens applied
 
 ---
 
@@ -103,26 +103,26 @@ Types: `feat` · `fix` · `chore` · `style` · `refactor`
 - [x] `src/lib/utils/duration.ts` — `parseDuration('PT1H27M53S')` → `'1:27:53'`
 - [x] `src/lib/utils/format.ts` — `formatViews('1234567')` → `'1.2M views'`
 - [x] `src/lib/adapters/youtube.ts` — `getTrending`, `search`, `getVideoDetail`, `getChannelUploadsPlaylistId`, `getChannelVideos`
-- [ ] Test adapter functions locally with `curl` before wiring route handlers
-- [ ] Commit: `chore(VT-003): add YouTube schemas, adapter, and utils`
+- [x] Test adapter functions locally with `curl` before wiring route handlers
+- [x] Commit: `chore(VT-003): add YouTube schemas, adapter, and utils`
 
 ---
 
 ### Day 5 — Route Handlers
 
 - [x] `app/api/v1/videos/route.ts` — GET `?category=` → calls `getTrending`
-- [ ] Commit: `feat(VT-004): add trending videos route handler`
+- [x] Commit: `feat(VT-004): add trending videos route handler`
 
 - [x] `app/api/v1/videos/[id]/route.ts` — GET → calls `getVideoDetail`
-- [ ] Commit: `feat(VT-005): add video detail route handler`
+- [x] Commit: `feat(VT-005): add video detail route handler`
 
 - [x] `app/api/v1/search/route.ts` — GET `?q=&pageToken=` → calls `search`
-- [ ] Commit: `feat(VT-006): add search route handler`
+- [x] Commit: `feat(VT-006): add search route handler`
 
 - [x] `app/api/v1/related/route.ts` — GET `?channelId=&playlistId=&pageToken=` → calls `getChannelVideos`
-- [ ] Commit: `feat(VT-007): add related videos route handler`
+- [x] Commit: `feat(VT-007): add related videos route handler`
 
-- [ ] Test all 4 routes with `curl http://localhost:3000/api/v1/...` before moving on
+- [x] Test all 4 routes with `curl http://localhost:3000/api/v1/...` before moving on
 
 ---
 
@@ -194,12 +194,12 @@ Types: `feat` · `fix` · `chore` · `style` · `refactor`
 
 ### Sprint 2 — Done When ✓
 
-- [ ] Home page shows trending videos with category tabs
-- [ ] Search returns results, infinite scroll works
-- [ ] Watch page plays video, shows related
-- [ ] Watchlist saves/removes across page reloads
-- [ ] Zero TS errors (`npm run build` passes)
-- [ ] All API calls go through `/api/v1/` — no key exposed to browser
+- [x] Home page shows trending videos with category tabs
+- [x] Search returns results, infinite scroll works
+- [x] Watch page plays video, shows related
+- [x] Watchlist saves/removes across page reloads
+- [x] Zero TS errors (`npm run build` passes)
+- [x] All API calls go through `/api/v1/` — no key exposed to browser
 
 ---
 
