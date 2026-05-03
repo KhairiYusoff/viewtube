@@ -17,19 +17,7 @@ export function WatchShell({ videoId }: WatchShellProps) {
   const { video, isLoading, error } = useVideoDetail(videoId);
   const { isInWatchlist, toggleItem } = useWatchlist();
 
-  const watchlistItem = useMemo(
-    () =>
-      video
-        ? {
-            id: video.id,
-            title: video.title,
-            thumbnail: video.thumbnail,
-            channelTitle: video.channelTitle,
-            duration: video.duration,
-          }
-        : null,
-    [video],
-  );
+  const watchlistItem = useMemo(() => video ?? null, [video]);
 
   const isSaved = video ? isInWatchlist(video.id) : false;
 

@@ -29,7 +29,7 @@ export function Navbar({ onMenuToggle }: NavbarProps) {
           type="button"
           onClick={onMenuToggle}
           aria-label="Open navigation"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-700 shadow-sm transition hover:border-zinc-300 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 md:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-700 shadow-sm transition hover:border-zinc-300 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 md:hidden"
         >
           <span className="text-xl leading-none">☰</span>
         </button>
@@ -56,7 +56,7 @@ export function Navbar({ onMenuToggle }: NavbarProps) {
 
         <Link
           href="/watchlist"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-700 shadow-sm transition hover:border-zinc-300 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-700 shadow-sm transition hover:border-zinc-300 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200"
           aria-label="Watchlist"
         >
           ★

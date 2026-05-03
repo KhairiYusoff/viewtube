@@ -211,12 +211,12 @@ Types: `feat` · `fix` · `chore` · `style` · `refactor`
 
 > `style(VT-013): responsive and visual polish`
 
-- [ ] 375px: no overflow, tap targets ≥44px, sidebar hidden (hamburger or bottom nav)
-- [ ] 1280px: 3-col grid, sidebar visible
-- [ ] Thumbnail hover scale animation working
-- [ ] Duration badge legible on all thumbnails
-- [ ] Category chips scroll horizontally on mobile without scrollbar showing
-- [ ] Commit: `style(VT-013): responsive polish`
+- [x] 375px: no overflow, tap targets ≥44px, sidebar hidden (hamburger or bottom nav)
+- [x] 1280px: 3-col grid, sidebar visible
+- [x] Thumbnail hover scale animation working
+- [x] Duration badge legible on all thumbnails
+- [x] Category chips scroll horizontally on mobile without scrollbar showing
+- [x] Commit: `style(VT-013): responsive polish`
 
 ---
 

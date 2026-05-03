@@ -11,7 +11,13 @@ interface VideoGridProps {
   action?: (video: Video) => ReactNode;
 }
 
-export function VideoGrid({ videos, isLoading = false, error, skeletonCount = 8, action }: VideoGridProps) {
+export function VideoGrid({
+  videos,
+  isLoading = false,
+  error,
+  skeletonCount = 8,
+  action,
+}: VideoGridProps) {
   if (error) {
     return (
       <div className="rounded-3xl border border-dashed border-red-700 bg-red-950 p-10 text-center text-sm text-red-400 h-80 flex flex-col items-center justify-center gap-4">
