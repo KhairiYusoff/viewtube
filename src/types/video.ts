@@ -9,4 +9,4 @@ export type Video = {
   publishedAt: string;
 };
 
-export type WatchlistItem = Pick<Video, 'id' | 'title' | 'thumbnail' | 'channelTitle' | 'duration'>;
+export type WatchlistItem = Video;

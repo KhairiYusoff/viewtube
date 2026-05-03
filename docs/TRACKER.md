@@ -172,13 +172,13 @@ Types: `feat` · `fix` · `chore` · `style` · `refactor`
 
 > `feat(VT-011): wire watch page`
 
-- [ ] `app/watch/[id]/page.tsx` reads `params.id`
-- [ ] `VideoPlayer` — YouTube iframe embed, 16:9 aspect ratio
-- [ ] `VideoMeta` — title + channel + view count + publish date
-- [ ] `WatchlistButton` — add/remove toggle, reads/writes `useWatchlist`
-- [ ] `RelatedVideos` sidebar — calls `useRelated`, infinite scroll
-- [ ] Responsive: player full-width on mobile, sidebar below player
-- [ ] Commit: `feat(VT-011): wire watch page with player, meta, and related videos`
+- [x] `app/watch/[id]/page.tsx` reads `params.id`
+- [x] `VideoPlayer` — YouTube iframe embed, 16:9 aspect ratio
+- [x] `VideoMeta` — title + channel + view count + publish date
+- [x] `WatchlistButton` — add/remove toggle, reads/writes `useWatchlist`
+- [x] `RelatedVideos` sidebar — calls `useRelated`, infinite scroll
+- [x] Responsive: player full-width on mobile, sidebar below player
+- [x] Commit: `feat(VT-011): wire watch page with player, meta, watchlist button, and related videos`
 
 ---
 
