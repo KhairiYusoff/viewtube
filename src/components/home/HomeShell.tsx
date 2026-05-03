@@ -65,8 +65,8 @@ export function HomeShell() {
       <Navbar onMenuToggle={() => setSidebarOpen((prev) => !prev)} />
       <div className="flex gap-6">
         <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-        <main className="flex mx-auto w-full max-w-8xl gap-6 px-4 py-6 sm:px-6 md:pl-0">
-          <section className="flex-1">
+        <main className="flex-1 mx-auto w-full max-w-8xl px-4 py-6 sm:px-6 md:pl-0">
+          <div>
             <CategoryTabs activeCategory={activeCategory} onCategoryChange={handleCategoryChange} />
             <VideoGrid videos={videos} isLoading={isLoading} error={error} />
             {hasMore && (
@@ -74,7 +74,7 @@ export function HomeShell() {
                 <div className="h-8 w-8 animate-spin rounded-full border-2 border-zinc-300 border-t-zinc-600 dark:border-zinc-600 dark:border-t-zinc-300" />
               </div>
             )}
-          </section>
+          </div>
         </main>
       </div>
     </div>
