@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { Video } from '@/types/video';
 import { VideoCard } from './VideoCard';
 import { VideoSkeleton } from './VideoSkeleton';
@@ -7,9 +8,10 @@ interface VideoGridProps {
   isLoading?: boolean;
   error?: unknown;
   skeletonCount?: number;
+  action?: (video: Video) => ReactNode;
 }
 
-export function VideoGrid({ videos, isLoading = false, error, skeletonCount = 8 }: VideoGridProps) {
+export function VideoGrid({ videos, isLoading = false, error, skeletonCount = 8, action }: VideoGridProps) {
   if (error) {
     return (
       <div className="rounded-3xl border border-dashed border-red-700 bg-red-950 p-10 text-center text-sm text-red-400 h-80 flex flex-col items-center justify-center gap-4">
@@ -49,7 +51,7 @@ export function VideoGrid({ videos, isLoading = false, error, skeletonCount = 8 
   return (
     <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
       {videos.map((video) => (
-        <VideoCard key={video.id} video={video} />
+        <VideoCard key={video.id} video={video} action={action ? action(video) : undefined} />
       ))}
     </div>
   );

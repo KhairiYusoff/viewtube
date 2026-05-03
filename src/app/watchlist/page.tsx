@@ -4,7 +4,7 @@ import { useWatchlist } from '@/hooks';
 import { VideoGrid } from '@/components/video';
 
 export default function WatchlistPage() {
-  const { items, count } = useWatchlist();
+  const { items, count, removeItem } = useWatchlist();
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -12,7 +12,9 @@ export default function WatchlistPage() {
         <div className="mb-6 rounded-3xl border border-zinc-800 bg-zinc-950 p-6">
           <h1 className="text-2xl font-semibold text-white">Watchlist</h1>
           <p className="mt-2 text-sm text-zinc-400">
-            {count > 0 ? `You have ${count} saved video${count === 1 ? '' : 's'}.` : 'Your watchlist is empty.'}
+            {count > 0
+              ? `You have ${count} saved video${count === 1 ? '' : 's'}.`
+              : 'Your watchlist is empty.'}
           </p>
         </div>
 
@@ -21,7 +23,18 @@ export default function WatchlistPage() {
             Your watchlist is empty. Save videos from the watch page to view them here.
           </div>
         ) : (
-          <VideoGrid videos={items} />
+          <VideoGrid
+            videos={items}
+            action={(video) => (
+              <button
+                type="button"
+                onClick={() => removeItem(video.id)}
+                className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white transition hover:bg-white/20"
+              >
+                Remove
+              </button>
+            )}
+          />
         )}
       </main>
     </div>

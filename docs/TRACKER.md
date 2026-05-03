@@ -186,11 +186,11 @@ Types: `feat` · `fix` · `chore` · `style` · `refactor`
 
 > `feat(VT-012): add watchlist page`
 
-- [ ] `app/watchlist/page.tsx` — reads from `useWatchlist`
-- [ ] Shows saved `WatchlistItem[]` in same `VideoGrid`
-- [ ] Remove item button on each card
-- [ ] Empty state: "Your watchlist is empty"
-- [ ] Commit: `feat(VT-012): add watchlist page`
+- [x] `app/watchlist/page.tsx` — reads from `useWatchlist`
+- [x] Shows saved `WatchlistItem[]` in same `VideoGrid`
+- [x] Remove item button on each card
+- [x] Empty state: "Your watchlist is empty"
+- [x] Commit: `feat(VT-012): complete watchlist page with remove button`
 
 ### Sprint 2 — Done When ✓
 
