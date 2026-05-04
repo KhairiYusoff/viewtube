@@ -38,6 +38,11 @@ export function useVideos(category?: string) {
   );
 
   const videos = data?.flatMap((page) => page.items) ?? [];
+
+  // Deduplicate videos by ID to prevent React key warnings
+  const uniqueVideos = videos.filter(
+    (video, index, arr) => arr.findIndex((v) => v.id === video.id) === index,
+  );
   const nextPageToken = data?.[data.length - 1]?.nextPageToken;
   const isLoading = !data && !error;
   const hasMore = Boolean(nextPageToken);
@@ -48,7 +53,7 @@ export function useVideos(category?: string) {
   };
 
   return {
-    videos,
+    videos: uniqueVideos,
     nextPageToken,
     isLoading,
     isValidating,
