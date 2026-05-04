@@ -7,6 +7,7 @@ import { VideoPlayer } from '@/components/watch/VideoPlayer';
 import { WatchlistButton } from '@/components/watch/WatchlistButton';
 import { RelatedVideos } from '@/components/watch/RelatedVideos';
 import { useVideoDetail, useWatchlist } from '@/hooks';
+import { formatViews, formatTimeAgo } from '@/lib/utils/format';
 
 interface WatchShellProps {
   videoId: string;
@@ -63,7 +64,7 @@ export function WatchShell({ videoId }: WatchShellProps) {
                         Views
                       </div>
                       <div className="mt-2 text-base font-medium text-zinc-900 dark:text-white">
-                        {video.viewCount}
+                        {formatViews(video.viewCount)}
                       </div>
                     </div>
                     <div className="rounded-3xl bg-zinc-100 p-4 text-sm text-zinc-700 dark:bg-zinc-900 dark:text-zinc-300">
@@ -71,7 +72,7 @@ export function WatchShell({ videoId }: WatchShellProps) {
                         Published
                       </div>
                       <div className="mt-2 text-base font-medium text-zinc-900 dark:text-white">
-                        {new Date(video.publishedAt).toLocaleDateString()}
+                        {formatTimeAgo(video.publishedAt)}
                       </div>
                     </div>
                     <div className="rounded-3xl bg-zinc-100 p-4 text-sm text-zinc-700 dark:bg-zinc-900 dark:text-zinc-300">

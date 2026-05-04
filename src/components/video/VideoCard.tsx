@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Video } from '@/types/video';
+import { formatViews, formatTimeAgo } from '@/lib/utils/format';
 
 interface VideoCardProps {
   video: Video;
@@ -38,7 +39,7 @@ export function VideoCard({ video, action }: VideoCardProps) {
         </div>
         <p className="text-sm text-zinc-600 dark:text-zinc-400">{video.channelTitle}</p>
         <p className="text-xs text-zinc-500 dark:text-zinc-500">
-          {video.viewCount} views · {new Date(video.publishedAt).toLocaleDateString()}
+          {formatViews(video.viewCount)} views · {formatTimeAgo(video.publishedAt)}
         </p>
       </div>
     </article>
