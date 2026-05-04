@@ -26,10 +26,10 @@ export function WatchShell({ videoId }: WatchShellProps) {
       <Navbar onMenuToggle={() => setSidebarOpen((prev) => !prev)} />
       <div className="flex gap-6">
         <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-        <main className="mx-auto flex w-full max-w-8xl flex-col gap-6 px-4 py-6 sm:px-6 md:flex-row md:pl-0">
-          <section className="flex-1 space-y-6">
+        <main className="mx-auto flex w-full max-w-8xl flex-col gap-6 px-4 py-6 sm:px-6 md:pl-0">
+          <section className="space-y-6">
             {isLoading ? (
-              <div className="rounded-3xl border border-zinc-800 bg-zinc-950 p-10 text-center text-sm text-zinc-400">
+              <div className="rounded-3xl border border-zinc-200 bg-white p-10 text-center text-sm text-zinc-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-400">
                 Loading video...
               </div>
             ) : error ? (
@@ -42,11 +42,15 @@ export function WatchShell({ videoId }: WatchShellProps) {
             ) : video ? (
               <>
                 <VideoPlayer videoId={video.id} title={video.title} />
-                <div className="rounded-3xl border border-zinc-800 bg-zinc-950 p-6 shadow-sm">
+                <div className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
                   <div className="mb-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                     <div>
-                      <h1 className="text-2xl font-semibold text-white">{video.title}</h1>
-                      <p className="mt-2 text-sm text-zinc-400">{video.channelTitle}</p>
+                      <h1 className="text-2xl font-semibold text-zinc-950 dark:text-white">
+                        {video.title}
+                      </h1>
+                      <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                        {video.channelTitle}
+                      </p>
                     </div>
                     <WatchlistButton
                       isSaved={isSaved}
@@ -54,23 +58,29 @@ export function WatchShell({ videoId }: WatchShellProps) {
                     />
                   </div>
                   <div className="grid gap-4 sm:grid-cols-3">
-                    <div className="rounded-3xl bg-zinc-900 p-4 text-sm text-zinc-300">
-                      <div className="text-xs uppercase tracking-[0.2em] text-zinc-500">Views</div>
-                      <div className="mt-2 text-base font-medium text-white">{video.viewCount}</div>
+                    <div className="rounded-3xl bg-zinc-100 p-4 text-sm text-zinc-700 dark:bg-zinc-900 dark:text-zinc-300">
+                      <div className="text-xs uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-500">
+                        Views
+                      </div>
+                      <div className="mt-2 text-base font-medium text-zinc-900 dark:text-white">
+                        {video.viewCount}
+                      </div>
                     </div>
-                    <div className="rounded-3xl bg-zinc-900 p-4 text-sm text-zinc-300">
-                      <div className="text-xs uppercase tracking-[0.2em] text-zinc-500">
+                    <div className="rounded-3xl bg-zinc-100 p-4 text-sm text-zinc-700 dark:bg-zinc-900 dark:text-zinc-300">
+                      <div className="text-xs uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-500">
                         Published
                       </div>
-                      <div className="mt-2 text-base font-medium text-white">
+                      <div className="mt-2 text-base font-medium text-zinc-900 dark:text-white">
                         {new Date(video.publishedAt).toLocaleDateString()}
                       </div>
                     </div>
-                    <div className="rounded-3xl bg-zinc-900 p-4 text-sm text-zinc-300">
-                      <div className="text-xs uppercase tracking-[0.2em] text-zinc-500">
+                    <div className="rounded-3xl bg-zinc-100 p-4 text-sm text-zinc-700 dark:bg-zinc-900 dark:text-zinc-300">
+                      <div className="text-xs uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-500">
                         Duration
                       </div>
-                      <div className="mt-2 text-base font-medium text-white">{video.duration}</div>
+                      <div className="mt-2 text-base font-medium text-zinc-900 dark:text-white">
+                        {video.duration}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -82,7 +92,7 @@ export function WatchShell({ videoId }: WatchShellProps) {
             )}
           </section>
 
-          <aside className="w-full md:w-[360px]">
+          <aside className="w-full">
             <RelatedVideos channelId={video?.channelId} />
           </aside>
         </main>

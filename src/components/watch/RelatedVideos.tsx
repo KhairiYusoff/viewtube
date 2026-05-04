@@ -46,24 +46,24 @@ export function RelatedVideos({ channelId, playlistId }: RelatedVideosProps) {
   }, [hasMore, isValidating, loadMore]);
 
   return (
-    <div className="rounded-3xl border border-zinc-800 bg-zinc-950 p-5 shadow-sm">
-      <h2 className="mb-4 text-lg font-semibold text-white">Related videos</h2>
+    <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
+      <h2 className="mb-4 text-lg font-semibold text-zinc-950 dark:text-white">Related videos</h2>
       {error ? (
         <div className="rounded-3xl border border-dashed border-red-700 bg-red-950 p-4 text-sm text-red-400">
           Failed to load related videos.
         </div>
       ) : isLoading && videos.length === 0 ? (
-        <div className="space-y-4">
-          {Array.from({ length: 4 }).map((_, index) => (
-            <div key={index} className="h-28 rounded-3xl bg-zinc-900" />
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {Array.from({ length: 8 }).map((_, index) => (
+            <div key={index} className="aspect-video rounded-3xl bg-zinc-100 dark:bg-zinc-900" />
           ))}
         </div>
       ) : videos.length === 0 ? (
-        <div className="rounded-3xl border border-dashed border-zinc-700 bg-zinc-950 p-6 text-sm text-zinc-400">
+        <div className="rounded-3xl border border-dashed border-zinc-200 bg-white p-6 text-sm text-zinc-600 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-400">
           No related videos found.
         </div>
       ) : (
-        <div className="space-y-4">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {videos.map((video) => (
             <VideoCard key={video.id} video={video} />
           ))}
