@@ -66,15 +66,13 @@ export function HomeShell() {
       <div className="flex gap-6">
         <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
         <main className="flex-1 mx-auto w-full max-w-8xl px-4 py-6 sm:px-6 md:pl-0">
-          <div>
-            <CategoryTabs activeCategory={activeCategory} onCategoryChange={handleCategoryChange} />
-            <VideoGrid videos={videos} isLoading={isLoading} error={error} />
-            {hasMore && (
-              <div ref={sentinelRef} className="flex justify-center py-8">
-                <div className="h-8 w-8 animate-spin rounded-full border-2 border-zinc-300 border-t-zinc-600 dark:border-zinc-600 dark:border-t-zinc-300" />
-              </div>
-            )}
-          </div>
+          <CategoryTabs activeCategory={activeCategory} onCategoryChange={handleCategoryChange} />
+          <VideoGrid videos={videos} isLoading={isLoading} error={error} />
+          {hasMore && (
+            <div ref={sentinelRef} className="flex justify-center py-8">
+              <div className="h-8 w-8 animate-spin rounded-full border-2 border-zinc-300 border-t-zinc-600 dark:border-zinc-600 dark:border-t-zinc-300" />
+            </div>
+          )}
         </main>
       </div>
     </div>

@@ -30,7 +30,7 @@ export function CategoryTabs({ activeCategory = 'All', onCategoryChange }: Categ
   };
 
   return (
-    <div className="flex w-full gap-2 overflow-x-auto px-4 pb-4 pt-2 text-sm sm:px-0 scrollbar-none">
+    <div className="sticky top-16 z-10 flex w-full gap-2 overflow-x-auto bg-background/95 px-4 pb-4 pt-2 text-sm backdrop-blur sm:px-0 scrollbar-none">
       {categories.map((category) => {
         const isActive = category === currentActive;
         return (

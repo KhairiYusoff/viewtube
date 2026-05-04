@@ -23,7 +23,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
       />
 
       <aside
-        className={`fixed inset-y-0 left-0 z-50 flex w-72 flex-col overflow-y-auto border-r border-zinc-200 bg-white px-4 py-6 shadow-xl transition-transform duration-200 dark:border-zinc-800 dark:bg-zinc-950 md:static md:translate-x-0 md:w-64 md:shadow-none ${
+        className={`fixed inset-y-0 left-0 z-50 flex w-72 flex-col overflow-y-auto border-r border-zinc-200 bg-white px-4 py-6 shadow-xl transition-transform duration-200 dark:border-zinc-800 dark:bg-zinc-950 md:sticky md:top-16 md:translate-x-0 md:w-64 md:shadow-none ${
           open ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
