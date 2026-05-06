@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState, useCallback } from 'react';
 import useSWRInfinite from 'swr/infinite';
 import { fetcher } from '@/lib/fetcher';
 import { Video } from '@/types/video';
@@ -29,37 +29,34 @@ const getKey = (query: string, pageIndex: number, previousPageData: SearchRespon
   return `/api/v1/search?${params.toString()}`;
 };
 
-export function useSearch(query: string) {
-  const [debouncedQuery, setDebouncedQuery] = useState(query);
-
-  useEffect(() => {
-    const timeout = window.setTimeout(() => {
-      setDebouncedQuery(query);
-    }, 500);
-
-    return () => {
-      window.clearTimeout(timeout);
-    };
-  }, [query]);
+export function useSearch(query?: string) {
+  const [searchQuery, setSearchQuery] = useState<string | undefined>(query);
+  const [shouldSearch, setShouldSearch] = useState(false);
 
   const { data, error, size, setSize, isValidating } = useSWRInfinite<SearchResponse>(
-    (index, previousPageData) => getKey(debouncedQuery.trim(), index, previousPageData),
+    (index, previousPageData) =>
+      shouldSearch && searchQuery?.trim()
+        ? getKey(searchQuery.trim(), index, previousPageData)
+        : null,
     fetcher,
   );
 
   const videos = data?.flatMap((page) => page.items) ?? [];
   const nextPageToken = data?.[data.length - 1]?.nextPageToken;
-  const isLoading = !!query && !data && !error;
+  const isLoading = shouldSearch && !!searchQuery && !data && !error;
   const hasMore = Boolean(nextPageToken);
 
-  useEffect(() => {
-    if (debouncedQuery.trim()) {
+  const executeSearch = useCallback(
+    (newQuery: string) => {
+      setSearchQuery(newQuery);
+      setShouldSearch(true);
       setSize(1);
-    }
-  }, [debouncedQuery]);
+    },
+    [setSize],
+  );
 
   return {
-    query: debouncedQuery,
+    query: searchQuery,
     videos,
     nextPageToken,
     isLoading,
@@ -68,5 +65,6 @@ export function useSearch(query: string) {
     size,
     loadMore: () => setSize(size + 1),
     hasMore,
+    executeSearch,
   };
 }

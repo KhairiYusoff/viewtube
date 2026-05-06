@@ -13,6 +13,7 @@ export function VideoPlayer({ videoId, title }: VideoPlayerProps) {
           src={`https://www.youtube.com/embed/${videoId}`}
           title={title || 'YouTube video player'}
           className="h-full w-full"
+          loading="eager"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
         />

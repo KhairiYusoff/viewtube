@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { Navbar } from '@/components/layout/Navbar';
 import { Sidebar } from '@/components/layout/Sidebar';
 import { VideoGrid } from '@/components/video';
@@ -15,15 +15,19 @@ export function SearchShell({ initialQuery }: SearchShellProps) {
   const sentinelRef = useRef<HTMLDivElement>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
-  const {
-    videos,
-    isLoading,
-    isValidating,
-    error,
-    loadMore,
-    hasMore,
-    query: debouncedQuery,
-  } = useSearch(initialQuery);
+  const { videos, isLoading, isValidating, error, loadMore, hasMore, query, executeSearch } =
+    useSearch();
+
+  // Only execute search if there's an initial query
+  const handleInitialSearch = useCallback(() => {
+    if (initialQuery && !query) {
+      executeSearch(initialQuery);
+    }
+  }, [initialQuery, query, executeSearch]);
+
+  useEffect(() => {
+    handleInitialSearch();
+  }, [handleInitialSearch]);
 
   useEffect(() => {
     // Always disconnect and reset on effect re-run
@@ -63,7 +67,7 @@ export function SearchShell({ initialQuery }: SearchShellProps) {
         <section className="flex-1">
           <div className="mb-6">
             <h1 className="text-2xl font-semibold text-white">
-              {debouncedQuery ? `Results for "${debouncedQuery}"` : 'Search Videos'}
+              {query ? `Results for "${query}"` : 'Search Videos'}
             </h1>
             <p className="text-sm text-zinc-400 mt-1">
               {videos.length > 0 && `Found ${videos.length}+ videos`}
